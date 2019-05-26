@@ -29,6 +29,12 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  mounted() {
+    // console.log(process.env)
+    alert(`process.env.baseUrl: ${process.env.baseUrl}`)
+    alert(`process.env.test: ${process.env.test}`)
+    // alert(`process.env: ${JSON.stringify(process.env)}`)
   }
 }
 </script>
