@@ -20,6 +20,7 @@
         >
       </div>
     </div>
+    <nuxt-link to="test-cookie">test-cookie</nuxt-link>
   </section>
 </template>
 
@@ -29,6 +30,12 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  created() {
+    this.$cookiz.set('testCookie', 'i am cookie1!', {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7
+    })
   }
 }
 </script>
