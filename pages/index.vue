@@ -34,6 +34,7 @@ export default {
     // console.log(process.env)
     alert(`process.env.baseUrl: ${process.env.baseUrl}`)
     alert(`process.env.test: ${process.env.test}`)
+    alert(`process.env.YSH: ${process.env.YSH}`)
     // alert(`process.env: ${JSON.stringify(process.env)}`)
   }
 }

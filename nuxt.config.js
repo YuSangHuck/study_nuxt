@@ -37,7 +37,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['@nuxtjs/dotenv', { filename: '.env' }]
   ],
   /*
    ** Axios module configuration
@@ -67,6 +68,6 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    test: 'test',
+    test: 'test'
   }
 }
