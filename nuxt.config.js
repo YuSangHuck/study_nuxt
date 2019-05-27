@@ -38,6 +38,7 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    ['@nuxtjs/dotenv', { filename: '.env' }],
     ['cookie-universal-nuxt', { alias: 'cookiz' }]
   ],
   /*
@@ -65,5 +66,9 @@ module.exports = {
         })
       }
     }
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    test: 'test'
   }
 }
