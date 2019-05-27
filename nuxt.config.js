@@ -39,7 +39,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: '.env' }],
-    ['cookie-universal-nuxt', { alias: 'cookiz' }]
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
+    ['nuxt-validate', { lang: 'ko' }]
   ],
   /*
    ** Axios module configuration
