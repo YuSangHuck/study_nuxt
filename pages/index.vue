@@ -21,6 +21,7 @@
       </div>
     </div>
     <nuxt-link to="test-cookie">test-cookie</nuxt-link>
+    <nuxt-link to="test-validate">test-validate</nuxt-link>
   </section>
 </template>
 
