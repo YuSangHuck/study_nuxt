@@ -18,6 +18,7 @@
           class="button--grey"
           >GitHub</a
         >
+        {{ ret }}
       </div>
     </div>
     <nuxt-link to="test-cookie">test-cookie</nuxt-link>
@@ -32,11 +33,30 @@ export default {
   components: {
     Logo
   },
+  data() {
+    return {
+      hello: 'hellooooooooo',
+      ret: 0
+    }
+  },
+  methods: {
+    test() {
+      alert(`hello! ${this.hello}`)
+      return {
+        k1: 'val1',
+        k2: 'val2',
+        k3: 'val3'
+      }
+    }
+  },
   created() {
     this.$cookiz.set('testCookie', 'i am cookie1!', {
       path: '/',
       maxAge: 60 * 60 * 24 * 7
     })
+    alert(`before test ${this.ret}`)
+    this.ret = this.test()
+    alert(`after test ${this.ret}`)
   },
   mounted() {
     // console.log(process.env)
