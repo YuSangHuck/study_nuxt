@@ -19,6 +19,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
+    'nuxt/no-cjs-in-config': 'off',
+    "prettier/prettier": ["error", { "semi": false }],
+    "import/no-unresolved": 0,
+    "prettier/prettier": 0,
+    "no-console": 0
   }
 }
