@@ -47,6 +47,12 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    HOST: 'localhost',
+    PORT: '9090',
+    prefix: '/',
+    debug: process.env.NODE_ENV !== 'production',
+    https: false,
+    progress: true
   },
 
   /*

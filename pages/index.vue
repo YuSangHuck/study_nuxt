@@ -21,8 +21,9 @@
         {{ ret }}
       </div>
     </div>
-    <nuxt-link to="test-cookie">test-cookie</nuxt-link>
-    <nuxt-link to="test-validate">test-validate</nuxt-link>
+    <p><nuxt-link to="test-cookie">test-cookie</nuxt-link></p>
+    <p><nuxt-link to="test-validate">test-validate</nuxt-link></p>
+    <p><nuxt-link to="test-axios">test-axios</nuxt-link></p>
   </section>
 </template>
 
@@ -39,6 +40,29 @@ export default {
       ret: 0
     }
   },
+  created() {
+    // this.$cookiz.set('testCookie', 'i am cookie1!', {
+    //   path: '/',
+    //   maxAge: 60 * 60 * 24 * 7
+    // })
+    // alert(`before test ${this.ret}`)
+    // this.ret = this.test()
+    // alert(`after test ${this.ret}`)
+  },
+  mounted() {
+    this.$cookiz.set('testCookie', 'i am cookie1!', {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7
+    })
+    alert(`before test ${this.ret}`)
+    this.ret = this.test()
+    alert(`after test ${this.ret}`)
+    // console.log(process.env)
+    alert(`process.env.baseUrl: ${process.env.baseUrl}`)
+    alert(`process.env.test: ${process.env.test}`)
+    alert(`process.env.YSH: ${process.env.YSH}`)
+    // alert(`process.env: ${JSON.stringify(process.env)}`)
+  },
   methods: {
     test() {
       alert(`hello! ${this.hello}`)
@@ -48,22 +72,6 @@ export default {
         k3: 'val3'
       }
     }
-  },
-  created() {
-    this.$cookiz.set('testCookie', 'i am cookie1!', {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7
-    })
-    alert(`before test ${this.ret}`)
-    this.ret = this.test()
-    alert(`after test ${this.ret}`)
-  },
-  mounted() {
-    // console.log(process.env)
-    alert(`process.env.baseUrl: ${process.env.baseUrl}`)
-    alert(`process.env.test: ${process.env.test}`)
-    alert(`process.env.YSH: ${process.env.YSH}`)
-    // alert(`process.env: ${JSON.stringify(process.env)}`)
   }
 }
 </script>
