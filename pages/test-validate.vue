@@ -1,32 +1,73 @@
 <template>
-  <section class="test-validate">
-    <div>
+<div>
+  <!-- handling syntax -->
+  <section class="syntax">
+    <h2>syntax</h2>
+    <div class="multiple-syntax single-error">
+      <h3>multiple syntax, single error</h3>
+      <p>syntax https://baianat.github.io/vee-validate/guide/rules.html</p>
       <p>email</p>
-      <input v-validate="'required|email'" name="a" type="text" />
-      <span>{{ errors.first('a') }}</span>
+      <div :class="{'invalid': errors.has('fieldName1')}" >
+        <input v-validate="'required|email'" name="fieldName1" type="text">
+        <p class="invalid">{{ errors.first('fieldName1') }}</p>
+      </div>
     </div>
-    <div>
-      <p>myinput</p>
-      <input v-validate="'required'" name="myinput" type="text" />
-      <span>{{ errors.first('myinput') }}</span>
+    <div class="syntax-parameter">
+      <h3>syntax parameter</h3>
+      <p>syntax parameter list list https://github.com/baianat/vee-validate/blob/master/locale/ko.js</p>
+      <p>between: (field, [min, max])</p>
+      <div :class="{'invalid': errors.has('fieldName2')}" >
+        <input v-validate="'required|between:1,11'" name="fieldName2" type="text" placeholder="1~11사이 숫자 입력">
+        <p>{{ errors.first('fieldName2') }}</p>
+      </div>
     </div>
-    <button @click="checkErr">Check Error</button>
   </section>
+  <!-- <section class="diplay-erros"> -->
+    <!-- errors.first api사용하면 편함 -->
+    <!-- <p>errors.first: {{errors.first}}</p> -->
+  <!-- </section> -->
+</div>
 </template>
 <script>
+
 export default {
-  components: {},
-  data() {
-    return {}
+  components: {
   },
-  created() {},
-  methods: {
-    checkErr() {
-      alert(this.errors)
-      for (const group in this.errors.collect()) alert(group)
+  data() {
+    return {
     }
+  },
+  created() {
+  },
+  methods: {
   }
 }
 </script>
 
-<style></style>
+<style>
+input:focus {
+  outline: none;
+}
+.invalid>input {
+  border: 1px solid red;
+}
+.invalid>p {
+  color: red;
+}
+/* input[aria-invalid="true"] {
+  color: red;
+  border: 10px solid blue;
+  outline: 10px solid red;
+}
+input[aria-invalid="false"] {
+  color: white;
+  border: 10px solid red;
+  outline: 10px solid blue;
+}
+input[type='text'] {
+  background: green;
+} */
+.invalid {
+  color: red;
+}
+</style>
