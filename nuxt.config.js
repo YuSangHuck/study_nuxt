@@ -55,6 +55,11 @@ module.exports = {
           },
         }
       },
+      classes: true,
+      classNames: {
+        valid: 'is-valid',
+        invalid: 'is-invalid'
+      },
     }]
   ],
   /*
