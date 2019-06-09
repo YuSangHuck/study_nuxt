@@ -40,7 +40,22 @@ module.exports = {
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: '.env' }],
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
-    ['nuxt-validate', { lang: 'ko' }]
+    ['nuxt-validate', {
+      // lang: 'en',
+      lang: 'ko',
+      dictionary: {
+        ko: {
+          // overwriting msg
+          messages: {
+            email: `field: , Some English Msg`
+          },
+          // attributes === fieldName === inputName
+          attributes: {
+            email: 'E-mail',
+          },
+        }
+      },
+    }]
   ],
   /*
    ** Axios module configuration
