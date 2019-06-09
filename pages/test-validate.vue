@@ -22,15 +22,20 @@
       </div>
     </div>
   </section>
-  <!-- <section class="diplay-erros"> -->
+  <section class="diplay-erros">
     <!-- errors.first api사용하면 편함 -->
-    <!-- <p>errors.first: {{errors.first}}</p> -->
-  <!-- </section> -->
+    <h3>single error msg, rule: 'required|alpha'</h3>
+    <div :class="{'invalid': errors.has('singleErr')}" >
+      <input v-validate="'required|alpha'" name="singleErr" type="text">
+      <p>{{errors.first('singleErr')}}</p>
+    </div>
+  </section>
 </div>
 </template>
 <script>
 
 export default {
+  name: 'TestValidate',
   components: {
   },
   data() {
