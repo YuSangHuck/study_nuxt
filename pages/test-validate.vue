@@ -36,6 +36,24 @@
         <li v-for="(err, idx) in errors.collect('multiErr')" :key="idx"><p>{{ err }}</p></li>
       </ul>
     </div>
+    <h3>all error msg</h3>
+    <h4>flat list of errors: errors.all()</h4>
+    <div :class="{'invalid': errors.any()}">
+      <ul>
+        <li v-for="(error, idx) in errors.all()" :key="idx"><p>{{ error }}</p></li>
+      </ul>
+    </div>
+    <h4>grouped by field name: errors.collect() -> group</h4>
+    <div :class="{'invalid': errors.any()}">
+      <ul>
+        <li v-for="(group, idx) in errors.collect()" :key="idx">
+          <p>group: {{group}}</p>
+          <ul>
+            <li v-for="(err, idx) in group" :key="idx" ><p>{{ err }}</p></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </section>
 </div>
 </template>
@@ -63,7 +81,7 @@ input:focus {
 .invalid>input {
   border: 1px solid red;
 }
-.invalid>p {
+.invalid p {
   color: red;
 }
 /* input[aria-invalid="true"] {
