@@ -29,6 +29,13 @@
       <input v-validate="'required|alpha'" name="singleErr" type="text">
       <p>{{errors.first('singleErr')}}</p>
     </div>
+    <h3>multiple error msg, rule: 'required|alpha|min:5|max:10'</h3>
+    <div :class="{'invalid': errors.has('multiErr')}" >
+      <input v-validate.continues="'required|alpha|min:5|max:10'" name="multiErr" type="text">
+      <ul>
+        <li v-for="(err, idx) in errors.collect('multiErr')" :key="idx"><p>{{ err }}</p></li>
+      </ul>
+    </div>
   </section>
 </div>
 </template>
