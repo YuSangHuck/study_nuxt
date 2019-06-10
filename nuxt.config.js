@@ -29,7 +29,14 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '@/plugins/vee-validate' },
+  ],
+
+  server: {
+    port: 3001, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  },
 
   /*
    ** Nuxt.js modules
@@ -40,27 +47,6 @@ module.exports = {
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: '.env' }],
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
-    ['nuxt-validate', {
-      // lang: 'en',
-      lang: 'ko',
-      dictionary: {
-        ko: {
-          // overwriting msg
-          messages: {
-            email: `field: , Some English Msg`
-          },
-          // attributes === fieldName === inputName
-          attributes: {
-            email: 'E-mail',
-          },
-        }
-      },
-      classes: true,
-      classNames: {
-        valid: 'is-valid',
-        invalid: 'is-invalid'
-      },
-    }]
   ],
   /*
    ** Axios module configuration
