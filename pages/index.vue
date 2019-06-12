@@ -22,15 +22,27 @@
     </div>
     <nuxt-link to="test-cookie">test-cookie</nuxt-link>
     <nuxt-link to="test-validate">test-validate</nuxt-link>
+    <nuxt-link to="test-local-storage">test-local-storage</nuxt-link>
+    <p>key: <input v-model="key" type="text"></p>
+    <p>val: <input v-model="val" type="text"></p>
+    <button @click="handleLocalStorage('set')">set</button>
+    <button @click="handleLocalStorage('get')">get</button>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import nuxtStorage from 'nuxt-storage';
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      key: '',
+      val: '',
+    }
   },
   created() {
     this.$cookiz.set('testCookie', 'i am cookie1!', {
@@ -44,7 +56,13 @@ export default {
     alert(`process.env.test: ${process.env.test}`)
     alert(`process.env.YSH: ${process.env.YSH}`)
     // alert(`process.env: ${JSON.stringify(process.env)}`)
-  }
+  },
+  methods: {
+    handleLocalStorage(method) {
+      if (method === 'set') nuxtStorage.localStorage.setData(this.key, this.val);
+      if (method === 'get') console.log(nuxtStorage.localStorage.getData(this.key));
+    },
+  },
 }
 </script>
 
@@ -52,7 +70,6 @@ export default {
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
