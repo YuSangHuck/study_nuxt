@@ -31,6 +31,7 @@ module.exports = {
    */
   plugins: [
     { src: '@/plugins/vee-validate' },
+    { src: '~/plugins/vuex-persistedstate.js', ssr: false },
   ],
 
   server: {

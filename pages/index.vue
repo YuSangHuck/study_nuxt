@@ -23,16 +23,21 @@
     <nuxt-link to="test-cookie">test-cookie</nuxt-link>
     <nuxt-link to="test-validate">test-validate</nuxt-link>
     <nuxt-link to="test-local-storage">test-local-storage</nuxt-link>
-    <p>key: <input v-model="key" type="text"></p>
-    <p>val: <input v-model="val" type="text"></p>
-    <button @click="handleLocalStorage('set')">set</button>
-    <button @click="handleLocalStorage('get')">get</button>
+    <!-- <p>key: <input v-model="key" type="text"></p>
+    <p>val: <input v-model="val" type="text"></p> -->
+    <!-- <button @click="handleLocalStorage('set')">set</button>
+    <button @click="handleLocalStorage('get')">get</button> -->
+    <p>isAuthorized: {{getIsAuthorized}}</p>
+    <p>userID: {{getUserID}}</p>
+    <button @click="signIn({a:1, b:2})">singnIn</button>
+    <button @click="signOut">singnOut</button>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
-import nuxtStorage from 'nuxt-storage';
+// import nuxtStorage from 'nuxt-storage';
+  import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -44,6 +49,16 @@ export default {
       val: '',
     }
   },
+  computed: {
+    ...mapState({
+      isAuthorized: state => state.auth.isAuthorized,
+      userID: state => state.auth.userID,
+    }),
+    ...mapGetters({
+      getIsAuthorized: 'getIsAuthorized',
+      getUserID: 'getUserID',
+    })
+  },
   created() {
     this.$cookiz.set('testCookie', 'i am cookie1!', {
       path: '/',
@@ -52,16 +67,31 @@ export default {
   },
   mounted() {
     // console.log(process.env)
-    alert(`process.env.baseUrl: ${process.env.baseUrl}`)
-    alert(`process.env.test: ${process.env.test}`)
-    alert(`process.env.YSH: ${process.env.YSH}`)
+    // alert(`process.env.baseUrl: ${process.env.baseUrl}`)
+    // alert(`process.env.test: ${process.env.test}`)
+    // alert(`process.env.YSH: ${process.env.YSH}`)
     // alert(`process.env: ${JSON.stringify(process.env)}`)
   },
+  destroyed() {
+    alert('나 이제 죽는당!')
+    alert(window.localStorage.getItem('vuex'))
+    window.localStorage.removeItem('vuex')
+    alert('죽었당!')
+    alert(window.localStorage.getItem('vuex'))
+  },
   methods: {
-    handleLocalStorage(method) {
-      if (method === 'set') nuxtStorage.localStorage.setData(this.key, this.val);
-      if (method === 'get') console.log(nuxtStorage.localStorage.getData(this.key));
-    },
+    // handleLocalStorage(method) {
+    //   if (method === 'set') nuxtStorage.localStorage.setData(this.key, this.val);
+    //   if (method === 'get') console.log(nuxtStorage.localStorage.getData(this.key));
+    // },
+    // handleVuex(method) {
+    //   if (method === 'set') this.$store..localStorage.setData(this.key, this.val);
+    //   if (method === 'get') console.log(nuxtStorage.localStorage.getData(this.key));
+    // }
+    ...mapActions( 'auth',[
+      'signIn',
+      'signOut',
+    ])
   },
 }
 </script>
