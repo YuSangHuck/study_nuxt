@@ -24,6 +24,7 @@
     <p><nuxt-link to="test-cookie">test-cookie</nuxt-link></p>
     <p><nuxt-link to="test-validate">test-validate</nuxt-link></p>
     <p><nuxt-link to="test-axios">test-axios</nuxt-link></p>
+    <p><nuxt-link to="test-async">test-async</nuxt-link></p>
   </section>
 </template>
 
