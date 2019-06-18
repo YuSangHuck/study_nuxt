@@ -75,8 +75,6 @@ export default {
       path: '/',
       maxAge: 60 * 60 * 24 * 7
     })
-    alert(`before test ${this.ret}`)
-    alert(`after test ${this.ret}`)
     // console.log(process.env)
     // alert(`process.env.baseUrl: ${process.env.baseUrl}`)
     // alert(`process.env.test: ${process.env.test}`)
