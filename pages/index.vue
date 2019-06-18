@@ -18,7 +18,6 @@
           class="button--grey"
           >GitHub</a
         >
-        {{ ret }}
       </div>
     </div>
     <nuxt-link to="test-cookie">test-cookie</nuxt-link>

@@ -43,6 +43,7 @@
         </li>
       </ul>
   </section>
+  <button @click="onClickCheckAll" >check all!</button>
 </div>
 </template>
 <script>
@@ -58,6 +59,15 @@ export default {
   created() {
   },
   methods: {
+    onClickCheckAll() {
+      this.$validator.validateAll().then(() => {
+          // success
+          console.log('success')
+        }).catch(() => {
+          // Failed
+          console.log('Failed')
+        });
+    },
   }
 }
 </script>
