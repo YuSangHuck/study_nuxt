@@ -33,6 +33,7 @@ module.exports = {
     { src: '@/plugins/vee-validate' },
     { src: '@/plugins/vuex-persistedstate', ssr: false },
     { src: '@/plugins/vue-sweetalert2', ssr: false },
+    { src: '@/plugins/axios' }
   ],
 
   server: {
@@ -55,6 +56,12 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    HOST: 'localhost',
+    PORT: '9090',
+    prefix: '/',
+    debug: process.env.NODE_ENV !== 'production',
+    https: false,
+    progress: true
   },
 
   /*
@@ -79,5 +86,9 @@ module.exports = {
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     test: 'test'
+  },
+
+  server: {
+    port: 9999
   }
 }
