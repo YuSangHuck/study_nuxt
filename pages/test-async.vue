@@ -1,42 +1,33 @@
 <template>
-  <section class="test-axios">
-    <p><input v-model="name" type="text"></p>
-    <p><input v-model="sec" type="text"></p>
-    <button @click="timer(name, sec)">timer(name, sec)</button>
-    <button @click="test">test</button>
-    <button @click="SerialFlow">SerialFlow</button>
+  <section class="test-async">
+    <section class="test-timer">
+      <p>timer test</p>
+      <p>name: <input v-model="name" type="text"></p>
+      <p>sec: <input v-model="sec" type="text"></p>
+      <button @click="timerWithNew(name, sec)">call timerWithNew(name, sec)</button>
+      <button @click="timerWithResolve(name, sec)">call timerWithResolve(name, sec)</button>
+    </section>
+    <section class="test">
+      <p>timerName: <input v-model="timerName" type="text"></p>
+      <button @click="testAsync">testAsync</button>
+      <button @click="testThen">testThen</button>
+    </section>
   </section>
 </template>
 <script>
-import { Promise } from 'q';
+import { Promise, resolve } from 'q';
 export default {
   components: {},
   data() {
     return {
-      name: '',
-      sec: 0,
+      name: 'a',
+      sec: 5,
+      timerName: 'timerWithNew',
     }
   },
   // created() {
   methods: {
-    doJob(x,sec) {
-      return new Promise(resolve => {
-        console.log('Start: ' + x);
-        setTimeout(() => {
-          console.log('End: ' + x);
-          resolve(x);
-        }, sec *1000);
-      });
-    },
-    async SerialFlow() {
-      const result1 = await this.doJob(1,1);
-      const result2 = await this.doJob(2,2);
-      const result3 = await this.doJob(3,3);
-      const finalResult = result1+result2+result3;
-      console.log(finalResult);
-      return finalResult;
-    },
-    timer(name, sec) {
+    timerWithNew(name, sec) {
       return new Promise(resolve => {
         setTimeout(function() {
           console.log(`${name} called`)
@@ -44,23 +35,50 @@ export default {
         }, 1000 * sec);
       })
     },
-    // async test() {
-    //   await this.timer('name1', 2);
-    //   await this.timer('name2', 2);
-    //   await this.timer('name3', 2);
-    //   await this.timer('name4', 2);
-    //   await this.timer('name5', 2);
-    // }
-    test() {
+    timerWithResolve(name, sec) {
+      return Promise.resolve(() => {
+          setTimeout(function() {
+            console.log(`${name} called`)
+            resolve();
+          }, 1000 * sec)
+      });
+        // .then(
+        // })
+    },
+    async testAsync(timerName) {
+      try {
+        await this.timerWithNew('name1', 1);
+        await this.timerWithNew('name2', 1);
+        await this.timerWithNew('name3', 1);
+        await this.timerWithNew('name4', 1);
+        await this.timerWithNew('name5', 1);
+        await this.timerWithResolve('name1', 1);
+        await this.timerWithResolve('name2', 1);
+        await this.timerWithResolve('name3', 1);
+        await this.timerWithResolve('name4', 1);
+        await this.timerWithResolve('name5', 1);
+      }
+      catch(error) {
+        console.error(error);
+      }
+      console.log('last call in testAsync');
+    },
+    testThen(timerName) {
       Promise.resolve()
-      .then(() => this.timer('name1', 2))
-      .then(() => this.timer('name2', 2))
-      .then(() => this.timer('name3', 2))
-      .then(() => this.timer('name4', 2))
-      .then(() => this.timer('name5', 2))
-      .catch((err) => {
-        console.error(err);
-      })
+        .then(() => this.timerWithNew('name1', 1))
+        .then(() => this.timerWithNew('name2', 1))
+        .then(() => this.timerWithNew('name3', 1))
+        .then(() => this.timerWithNew('name4', 1))
+        .then(() => this.timerWithNew('name5', 1))
+        .then(() => this.timerWithResolve('name1', 1))
+        .then(() => this.timerWithResolve('name2', 1))
+        .then(() => this.timerWithResolve('name3', 1))
+        .then(() => this.timerWithResolve('name4', 1))
+        .then(() => this.timerWithResolve('name5', 1))
+        .catch((err) => {
+          console.error(err);
+        })
+      console.log('first call in testThen');
     }
   }
 }
