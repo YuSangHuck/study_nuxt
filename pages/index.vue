@@ -24,6 +24,7 @@
     <nuxt-link to="test-validate">test-validate</nuxt-link>
     <nuxt-link to="test-local-storage">test-local-storage</nuxt-link>
     <nuxt-link to="test-swal">test-swal</nuxt-link>
+    <nuxt-link to="test-string-parsing">test-string-parsing</nuxt-link>
     <!-- <p>key: <input v-model="key" type="text"></p>
     <p>val: <input v-model="val" type="text"></p> -->
     <!-- <button @click="handleLocalStorage('set')">set</button>
