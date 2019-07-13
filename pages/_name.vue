@@ -11,14 +11,14 @@ const infos = {
     description: '난 turtlog의 description',
     image_type: 'image/jpg',
     image: '/turtlog.jpg',
-    url: 'http://turtlog.ml/turtlog'
+    url: 'http://study-nuxt.ml/turtlog'
   },
   whale_shark: {
     title: '난 whale_shark의 title',
     description: '난 whale_shark의 description',
     image_type: 'image/jpg',
     image: '/whale_shark.jpg',
-    url: 'http://turtlog.ml/whale_shark'
+    url: 'http://study-nuxt.ml/whale_shark'
   },
 }
 export default {

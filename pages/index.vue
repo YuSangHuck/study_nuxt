@@ -76,7 +76,7 @@ export default {
         { property: 'og:description', content: 'home description', vmid: 'og:description' },
         { property: 'og:image:type', content: 'image/jpg', vmid: 'og:image:type' },
         { property: 'og:image', content: '/og_home.jpg', vmid: 'og:image' },
-        { property: 'og:url', content: 'http://turtlog.ml', vmid: 'og:url' },
+        { property: 'og:url', content: 'http://study-nuxt.ml', vmid: 'og:url' },
         { property: 'og:type', content: 'website', vmid: 'og:type' },
       ],
     };
