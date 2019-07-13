@@ -42,7 +42,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: '.env' }],
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
