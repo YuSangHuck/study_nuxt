@@ -5,18 +5,18 @@
     <p>원본</p>
     <template v-for="(raw, idx) in raws">
       <p :key="raw.id"><strong>{{ idx }}</strong></p>
-      <div class="raw" :key="raw.id">
+      <div :key="raw.id" class="raw">
         <p class="review">{{ raw }}</p>
       </div>
     </template>
     <br><br>
     <p>파싱 실제 결과</p>
     <div class="reviews">
-      <template class="review" v-for="(res, idx) in ress">
+      <template v-for="(res, idx) in ress" class="review">
         <p :key="res.id"><strong>{{ idx }}</strong></p>
-        <template class="review" v-for="re in res">
-          <p class="text" v-if="re.type === 'txt'" :key="re.id">{{ re.content }}</p>
-          <img class="img" v-else :src="re.content" alt="" :key="re.id"/>
+        <template v-for="re in res" class="review">
+          <p v-if="re.type === 'txt'" :key="re.id" class="text">{{ re.content }}</p>
+          <img v-else :key="re.id" class="img" :src="re.content" alt=""/>
         </template>
       </template>
     </div>

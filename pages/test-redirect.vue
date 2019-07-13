@@ -11,6 +11,11 @@ export default {
     console.log('validate called')
     return true;
   },
+  components: {},
+  data() {
+    return {
+    }
+  },
   asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
     console.log('asyncData called')
     // console.log(`reciect called with ${redirect}`);
@@ -24,11 +29,6 @@ export default {
 
     // const testQuery = query;
     return { query }
-  },
-  components: {},
-  data() {
-    return {
-    }
   },
   created() {
   },
