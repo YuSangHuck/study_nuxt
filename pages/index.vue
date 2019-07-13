@@ -1,5 +1,9 @@
 <template>
   <section class="container">
+    <div class="test-og-tags">
+      <input type="text" v-model="name">
+      <button @click="$router.push(name)">go to study-nuxt.ml/{{ name }}</button>
+    </div>
     <div>
       <logo />
       <h1 class="title">
@@ -50,6 +54,7 @@ export default {
     return {
       key: '',
       val: '',
+      name: '',
     }
   },
   computed: {
