@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="test-og-tags">
-      <input type="text" v-model="name">
+      <input v-model="name" type="text">
       <button @click="$router.push(name)">go to study-nuxt.ml/{{ name }}</button>
       살아있냐
     </div>
