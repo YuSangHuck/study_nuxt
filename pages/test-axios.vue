@@ -15,31 +15,31 @@ export default {
       err: {},
     }
   },
-  async asyncData({ $axios, params }) {
-    let response1, response2
-    await $axios
-      .get('/', {
-        timeout: 2000
-      })
-      .then(res => {
-        response1 = res.headers
-      })
-      .catch(err => {
-        response1 = err
-      })
-    await $axios
-      .get('/', {
-        timeout: 2000
-      })
-      .then(res => {
-        response2 = res.headers
-      })
-      .catch(err => {
-        response2 = err
-      })
+  // async asyncData({ $axios, params }) {
+  //   let response1, response2
+  //   await $axios
+  //     .get('/', {
+  //       timeout: 2000
+  //     })
+  //     .then(res => {
+  //       response1 = res.headers
+  //     })
+  //     .catch(err => {
+  //       response1 = err
+  //     })
+  //   await $axios
+  //     .get('/', {
+  //       timeout: 2000
+  //     })
+  //     .then(res => {
+  //       response2 = res.headers
+  //     })
+  //     .catch(err => {
+  //       response2 = err
+  //     })
 
-    return { response1, response2 }
-  },
+  //   return { response1, response2 }
+  // },
   // created() {
   beforeMouunt() {
     this.reqToServerHeader.host = 'this is test-request'
