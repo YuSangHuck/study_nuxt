@@ -12,6 +12,8 @@ jobs:
           command: npm run generate
           environment:
             NODE_ENV: production
+            YSH: YuSangHuck
+            API_URL: "https://api.alpha.7rend.com"
       - run: aws s3 cp ./dist s3://study-nuxt.ml/ --acl public-read --recursive
       # - run:
       #     command: aws cloudfront create-invalidation
