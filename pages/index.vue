@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    <p><button @click="apiCall">api call</button></p>
     <div class="test-og-tags">
       <input v-model="name" type="text">
       <button @click="$router.push(name)">go to study-nuxt.ml/{{ name }}</button>
@@ -96,11 +97,11 @@ export default {
       path: '/',
       maxAge: 60 * 60 * 24 * 7
     })
-    // console.log(process.env)
-    // alert(`process.env.baseUrl: ${process.env.baseUrl}`)
-    // alert(`process.env.test: ${process.env.test}`)
-    // alert(`process.env.YSH: ${process.env.YSH}`)
-    // alert(`process.env: ${JSON.stringify(process.env)}`)
+    console.log(process.env)
+    alert(`process.env.baseUrl: ${process.env.baseUrl}`)
+    alert(`process.env.test: ${process.env.test}`)
+    alert(`process.env.YSH: ${process.env.YSH}`)
+    alert(`process.env.API_URL: ${process.env.API_URL}`)
   },
   destroyed() {
     // alert('나 이제 죽는당!')
@@ -121,7 +122,16 @@ export default {
     ...mapActions( 'auth',[
       'signIn',
       'signOut',
-    ])
+    ]),
+    apiCall() {
+      this.$axios.$get('/')
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
   },
 }
 </script>

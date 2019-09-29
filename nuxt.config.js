@@ -1,4 +1,6 @@
 const pkg = require('./package')
+/* eslint-disable */
+require('dotenv').config();
 
 module.exports = {
   mode: 'universal',
@@ -51,12 +53,12 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    HOST: 'localhost',
-    PORT: '9090',
-    prefix: '/',
+    // HOST: 'localhost',
+    // PORT: '9090',
+    // prefix: '/',
     debug: process.env.NODE_ENV !== 'production',
-    https: false,
-    progress: true
+    // https: false,
+    // progress: true
   },
 
   /*
@@ -78,13 +80,14 @@ module.exports = {
       }
     }
   },
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    test: 'test'
-  },
+  // env: {
+  //   baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  //   test: 'test'
+  // },
 
   server: {
-    port: 9999,
+    // port: 9999,
+    port: 3000,
     // host: '0.0.0.0', // default: localhost
   }
 }
